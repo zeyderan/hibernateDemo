@@ -29,7 +29,9 @@ public class Main {
 			session.beginTransaction();
 			
 //			burada sorgu gönderilip sonuç list içerisine alýnýr
-			List<City> cities = session.createQuery("from City").getResultList();
+//			city deðil City yazýlmalý class ismi
+//			from City c where c.countryCode='TUR' AND c.district='Istanbul bölgesi istanbul olan türkiyedeli þehirleri getir
+			List<City> cities = session.createQuery("from City c ORDER BY c.name ASC").getResultList();
 			
 //			list elemanlarýný ekrana yazdýrýr
 			for(City city:cities) {
