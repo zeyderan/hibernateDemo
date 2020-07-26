@@ -31,12 +31,12 @@ public class Main {
 //			burada sorgu gönderilip sonuç list içerisine alýnýr
 //			city deðil City yazýlmalý class ismi
 //			from City c where c.countryCode='TUR' AND c.district='Istanbul bölgesi istanbul olan türkiyedeli þehirleri getir
-			List<City> cities = session.createQuery("from City c ORDER BY c.name ASC").getResultList();
+			List<String> countryCodes = session.createQuery("select c.countryCode from City c GROUP BY c.countryCode").getResultList();
 			
 //			list elemanlarýný ekrana yazdýrýr
-			for(City city:cities) {
+			for(String countryCode:countryCodes) {
 //				tablodaki name sütunu içerisindekiler okur
-				System.out.println(city.getName());
+				System.out.println(countryCode);
 			}
 			session.getTransaction().commit();
 		}finally {
